@@ -41,8 +41,8 @@ func main() {
 	filteredEnv := make(map[string]string)
 	for _, e := range os.Environ() {
 		if i := strings.Index(e, "="); i >= 0 {
-			if strings.HasPrefix(e[:i], prefixFlag) {
-				filteredEnv[e[:i]] = e[i+1:]
+			if envName, found := strings.CutPrefix(e[:i], prefixFlag); found {
+				filteredEnv[envName] = e[i+1:]
 			}
 		}
 	}
