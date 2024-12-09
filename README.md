@@ -85,19 +85,10 @@ spec:
   ports:
     - protocol: TCP
       port: 3000
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    name: ui-env
-  name: ui-env
-spec:
-  selector:
-    app: ui-env
-  ports:
+      name: ui
     - protocol: TCP
       port: 8080
+      name: ui-env
 ---
 # Define ingress with path mapping, example with Traefik
 apiVersion: traefik.io/v1alpha1
@@ -111,7 +102,7 @@ spec:
     - kind: Rule
       match: Host(`example.com`) && PathPrefix(`/.env`)
       services:
-        - name: ui-env
+        - name: ui
           port: 8080
     - kind: Rule
       match: Host(`example.com`)
