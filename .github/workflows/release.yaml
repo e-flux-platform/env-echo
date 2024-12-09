@@ -28,7 +28,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: road/env-echo
+          images: quay.io/road/env-echo
           flavor: |
             latest=auto
           tags: |
