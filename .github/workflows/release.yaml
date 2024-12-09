@@ -28,6 +28,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: roadio/env-echo
+          flavor: |
+            latest=auto
+          tags: |
+            type=sha
 
       - name: Build and push Docker image
         id: push
@@ -42,6 +46,6 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-name: docker.io/roadio/env-echo
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
