@@ -29,10 +29,9 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: quay.io/road/env-echo
-          flavor: |
-            latest=auto
           tags: |
-            type=sha
+            type=raw,value=latest,enable=true
+            type=sha,prefix=,format=long
 
       - name: Build and push Docker image
         id: push
