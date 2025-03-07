@@ -1,5 +1,5 @@
 module github.com/e-flux-platform/env-echo
 
-go 1.23.2
+go 1.23.5
 
-require github.com/elnormous/contenttype v1.0.4 // indirect
+require github.com/elnormous/contenttype v1.0.4
